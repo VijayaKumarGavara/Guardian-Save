@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login and Registration Form in HTML & CSS | CodingLab</title>
+    <link rel="stylesheet" href="Themecss.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+        <div class="front">
+            <img id="logo" src="logo.jpg" alt="">
+        </div>
+    </div>
+    <!-------------------------------------------------------->
+    <div class="forms">
+        <div class="form-content">
+            <div class="login-form">
+                <div class="title">Login</div>
+                <form action="login.php" method="POST">
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input name="username" id="username" type="text" placeholder="Enter your Name" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input name="password" id="password" type="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="input-box1">
+                            <label for="login_account_type">Account Type:</label>
+                            <select id="login_account_type" name="account_type" required>
+                                <option value="parent">Guardian</option>
+                                <option value="child">Dependent</option>
+                            </select><br><br>
+                        </div>
+                        <div class="button input-box">
+                            <input type="submit" value="Submit">
+                        </div>
+                        <div class="text sign-up-text">Don't have an account? <label onclick="imgchange()" for="flip">Register now</label></div>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-form">
+                <div class="title">Register</div>
+                <form action="registration.php" method="post">
+                    <div class="input-boxes">
+                        <div class="input-box">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Enter your name" name="name" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-calendar"></i>
+                            <input type="date" id="date_of_birth" name="date_of_birth" placeholder="Enter your DOB" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-asterisk"></i>
+                            <input type="text" id="account_number" name="account_number" placeholder="Enter your account number" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" id="registration_username" name="username" placeholder="Enter your Username" required>
+                        </div>
+                        <div class="input-box">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="registration_password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="input-box1">
+                            <label for="registration_account_type">Account Type:</label>
+                            <select id="registration_account_type" name="account_type" required>
+                                <option value="parent">Guardian</option>
+                                <option value="child">Dependent</option>
+                            </select><br><br>
+                        </div>
+                        <div id="parent_token_div" style="display:none;">
+                            <label for="parent_token">Guardian's Token Number:</label>
+                            <input type="text" id="parent_token" name="parent_token">
+                        </div>
+                        <div class="button input-box">
+                            <input type="submit" value="Submit">
+                        </div>
+                        <div class="text sign-up-text">Already have an account? <label onclick="imgchange2()" for="flip">Login now</label></div>
+                    </div>
+                </form>
+                <!------------------------------------------------------------------------->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // For registration form
+    document.getElementById('registration_account_type').addEventListener('change', function () {
+        var parentTokenDiv = document.getElementById('parent_token_div');
+        if (this.value === 'child') {
+            parentTokenDiv.style.display = 'block';
+        } else {
+            parentTokenDiv.style.display = 'none';
+        }
+    });
+
+    function imgchange() {
+        document.getElementById("logo").src = "logoflip.jpg";
+    }
+
+    function imgchange2() {
+        document.getElementById("logo").src = "logo.jpg";
+    }
+</script>
+</body>
+</html>

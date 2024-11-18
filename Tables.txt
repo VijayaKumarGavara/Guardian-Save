@@ -1,0 +1,25 @@
+CREATE TABLE parents (
+    account_number VARCHAR(20) NOT NULL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    upi_pin VARCHAR(255) DEFAULT NULL,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    token_id VARCHAR(50) NOT NULL UNIQUE,
+    balance DECIMAL(10,2) DEFAULT 5000.00,
+    INDEX (username)
+) CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+
+
+CREATE TABLE children (
+    account_number VARCHAR(20) NOT NULL PRIMARY KEY,
+    parent_token_id VARCHAR(50) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    upi_pin VARCHAR(255) DEFAULT NULL,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    balance DECIMAL(10,2) DEFAULT 5000.00,
+    INDEX (parent_token_id),
+    FOREIGN KEY (parent_token_id) REFERENCES parents(token_id) ON DELETE CASCADE ON UPDATE CASCADE
+) CHARACTER SET latin1 COLLATE latin1_swedish_ci;
